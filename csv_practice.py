@@ -1,6 +1,7 @@
 # Reflection answers go here (we'll fill these in at the end)
 
 import csv
+from datetime import datetime
 
 # Exercise 1: sales.csv is in data/sales.csv
 
@@ -82,3 +83,10 @@ with open("data/sales.csv", "r") as f:
         summary[product] = summary.get(product, 0) + revenue
 for product in sorted(summary):
     print(f"{product}: ${summary[product]:.2f}")
+
+# Exercise 8: Append mode log
+print("\n=== Exercise 8 ===")
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+with open("data/run_log.txt", "a") as log:
+    log.write(f"{timestamp} - Total revenue: ${total_revenue:.2f}\n")
+print("Logged this run to data/run_log.txt")
