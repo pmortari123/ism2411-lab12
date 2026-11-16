@@ -70,3 +70,15 @@ with open("data/sales.csv", "r") as f:
         print(f"{product}: {quantity} units × ${price:.2f} = ${line_total:.2f}")
 print(f"Total revenue: ${dict_total:.2f}")
 print("Matches Exercise 4:", round(dict_total, 2) == round(total_revenue, 2))
+
+# Exercise 7: Sales summary by product
+print("\n=== Exercise 7 ===")
+summary = {}
+with open("data/sales.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        product = row["product"]
+        revenue = float(row["price"]) * int(row["quantity"])
+        summary[product] = summary.get(product, 0) + revenue
+for product in sorted(summary):
+    print(f"{product}: ${summary[product]:.2f}")
