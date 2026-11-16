@@ -53,3 +53,20 @@ with open("data/sales.csv", "r") as infile, open("data/cleaned.csv", "w", newlin
             writer.writerow([row[0], f"{price:.2f}", quantity, f"{total:.2f}"])
             written_count += 1
 print(f"Wrote {written_count} of {original_count} rows to data/cleaned.csv")
+
+# Exercise 6: csv.DictReader
+# csv.reader gives each row as a list, so you use positions like row[1]. It's fine for small files you know well.
+# csv.DictReader uses column names like row["price"], which is easier to read and won't break if the columns move.
+print("\n=== Exercise 6 ===")
+dict_total = 0
+with open("data/sales.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        product = row["product"]
+        price = float(row["price"])
+        quantity = int(row["quantity"])
+        line_total = price * quantity
+        dict_total += line_total
+        print(f"{product}: {quantity} units × ${price:.2f} = ${line_total:.2f}")
+print(f"Total revenue: ${dict_total:.2f}")
+print("Matches Exercise 4:", round(dict_total, 2) == round(total_revenue, 2))
