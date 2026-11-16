@@ -1,4 +1,14 @@
-# Reflection answers go here (we'll fill these in at the end)
+# Reflection
+# 1. Doing this ETL in Python instead of Excel means the whole process is saved as a script,
+#    so when a new sales file comes in I can run it again in seconds and get the same steps every time.
+#    Python also handles very large files and repetitive work (reading, filtering, writing new files)
+#    better than doing it by hand in Excel. Excel is still quicker for looking at small data,
+#    making fast charts, or making one-off edits where writing code would be too much.
+#
+# 2. At my valet job, an append-mode log could record every car check-in and check-out with a
+#    timestamp, ticket number, and attendant. Append mode is the right tool because each new entry
+#    gets added to the end without erasing the earlier ones, so the business keeps a full history
+#    it can check later if a customer has a complaint or something goes missing.
 
 import csv
 from datetime import datetime
